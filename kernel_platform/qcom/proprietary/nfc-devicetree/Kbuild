@@ -1,0 +1,19 @@
+ifeq ($(CONFIG_ARCH_KALAMA),y)
+dtbo-y += nxp/kalama-nfc.dtbo \
+	  nxp/kalama-nfc-mtp.dtbo \
+	  nxp/kalama-nfc-qrd.dtbo \
+	  nxp/kalama-nfc-cdp.dtbo
+
+dtbo-y += st/kalama-nfc.dtbo \
+	  st/kalama-nfc-mtp.dtbo
+endif
+
+ifeq ($(CONFIG_ARCH_MONACO),y)
+dtbo-y += nxp/monaco-nfc.dtbo \
+	  nxp/monaco-nfc-standalone-idp-v1.dtbo \
+	  nxp/monaco-nfc-idp-v1.dtbo
+endif
+
+always-y	:= $(dtb-y) $(dtbo-y)
+subdir-y	:= $(dts-dirs)
+clean-files	:= *.dtb *.dtbo
